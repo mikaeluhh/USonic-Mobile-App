@@ -1,10 +1,33 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StatusBar } from "expo-status-bar";
+import { StyleSheet, View } from "react-native";
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
+import Dashboard from "./screens/Dashboard";
+import IndividualResult from "./screens/IndividualResult";
+import Results from "./screens/Results";
+import SplashScreen from "./screens/SplashScreen";
+import Homepage from "./screens/Homepage";
+import Account from "./screens/Account";
+
+const Stack = createStackNavigator();
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
+      <NavigationContainer>
+        <Stack.Navigator
+          screenOptions={{ headerShown: false }}
+          initialRouteName="Homepage"
+        >
+          
+          <Stack.Screen name="SplashScreen" component={SplashScreen} />
+          <Stack.Screen name="Homepage" component={Homepage} />
+          <Stack.Screen name="Dashboard" component={Dashboard} />
+          <Stack.Screen name="Results" component={Results} />
+          <Stack.Screen name="Account" component={Account} />
+          <Stack.Screen name="IndividualResult" component={IndividualResult}/>
+        </Stack.Navigator>
+      </NavigationContainer>
       <StatusBar style="auto" />
     </View>
   );
@@ -13,8 +36,6 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: "#111315", //'#242529
   },
 });
